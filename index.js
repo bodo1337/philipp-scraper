@@ -29,6 +29,9 @@ let getURL = (url) => {
 }
 //write to file
 let writeToCSV = (data) => {
+    if (!fs.existsSync("results/")){
+        fs.mkdirSync("results/");
+    }
     var file = fs.createWriteStream("results/" + Date.now().toString() + ".csv");
     data.forEach((element) => {
         file.write(element + '\n')
